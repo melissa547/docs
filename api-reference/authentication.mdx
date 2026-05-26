@@ -1,0 +1,67 @@
+---
+title: "Authentication"
+description: "How to authenticate against the Arrays API — API Key or Nanopayment."
+---
+
+Arrays supports **two authentication modes**.
+
+## 1. API Key (recommended for most users)
+
+Send your key in the `X-API-Key` header.
+
+<Tabs>
+  <Tab title="cURL">
+    ```bash
+    curl "https://data-tools.prd.space.id/api/v1/equity/quote?symbol=AAPL" \
+      -H "X-API-Key: $ARRAYS_API_KEY"
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```python
+    import requests, os
+    r = requests.get(
+        "https://data-tools.prd.space.id/api/v1/equity/quote",
+        headers={"X-API-Key": os.environ["ARRAYS_API_KEY"]},
+        params={"symbol": "AAPL"},
+    )
+    ```
+  </Tab>
+  <Tab title="Node.js">
+    ```javascript
+    const res = await fetch(
+      "https://data-tools.prd.space.id/api/v1/equity/quote?symbol=AAPL",
+      { headers: { "X-API-Key": process.env.ARRAYS_API_KEY } }
+    );
+    ```
+  </Tab>
+</Tabs>
+
+### Get a key
+
+1. Sign up at [arrays.org](https://arrays.org) (email, Google, or GitHub)
+2. Copy the key from your Dashboard — visible immediately
+3. Store in env / secret manager — never commit to git
+
+### Security best practices
+
+<Warning>
+- Never expose your API key in client-side code (browser, mobile, public Cursor rules).
+- Use a backend proxy if you need to call Arrays from a browser app.
+- Rotate keys regularly from the Dashboard.
+- Use separate keys for dev / staging / prod.
+</Warning>
+
+## 2. Nanopayment (no key, pay-per-call)
+
+For crypto endpoints, you can skip the API key entirely and pay per call in USDC.
+
+[Full Nanopayment guide →](/nanopayment/overview)
+
+```typescript
+import { wrapFetchWithPayment } from "x402-fetch";
+
+const fetchWithPayment = wrapFetchWithPayment(fetch, walletClient);
+const res = await fetchWithPayment(
+  "https://data-tools.prd.space.id/api/v1/crypto/funding-rate?symbol=BTCUSDT"
+);
+```

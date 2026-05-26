@@ -1,0 +1,40 @@
+---
+title: "Install on OpenAI Codex"
+description: "Use Arrays Skills inside OpenAI Codex agents."
+---
+
+## 1. Clone the Skills repo
+
+```bash
+git clone https://github.com/ArraysData/arrays-skills.git
+```
+
+## 2. Include Skills as Codex instructions
+
+When configuring your Codex agent, include the relevant `SKILL.md` files as part of the instruction set. Codex's markdown context format is directly compatible.
+
+```bash
+# Example: load equity fundamentals skill into agent
+codex agent create my-finance-agent \
+  --instructions ./arrays-skills/skills/arrays-data-api-equity-fundamentals/SKILL.md \
+  --env ARRAYS_API_KEY=$ARRAYS_API_KEY
+```
+
+<Tip>
+For agents that handle many domains, concatenate multiple `SKILL.md` files together, or use a meta-instruction that references the whole `skills/` directory.
+</Tip>
+
+## 3. Test it
+
+Ask your Codex agent:
+
+```
+Give me the top 10 holdings of SPY and their weight.
+```
+
+The agent should pull from the `arrays-data-api-etf-fundamentals` Skill.
+
+## Notes
+
+- Codex doesn't yet support automatic Skill selection across multiple `SKILL.md` files — you may need to specify which Skill is active per agent.
+- For multi-domain agents, see the [`arrays-skill-creator`](https://github.com/ArraysData/arrays-skills/tree/main/skills/arrays-skill-creator) template to compose custom Skills.

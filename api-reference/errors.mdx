@@ -1,0 +1,58 @@
+---
+title: "Errors & Rate Limits"
+description: "HTTP status codes, error envelope, and retry guidance."
+---
+
+## Error envelope
+
+When a request fails, the response shape is:
+
+```json
+{
+  "success": false,
+  "request_id": "req_abc123",
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Daily request quota reached (100 req/day on Free tier)."
+  }
+}
+```
+
+`request_id` is unique per request — include it when reporting issues.
+
+## Status codes
+
+| Code | Meaning | What to do |
+|---|---|---|
+| `200` | Success | — |
+| `400` | Bad request — invalid params | Check the parameter table in [API Reference](/api-reference/introduction) |
+| `401` | Unauthorized | Verify `X-API-Key` header is set and the key is valid |
+| `402` | Payment required (Nanopayment) | Sign EIP-3009 authorization and retry |
+| `403` | Forbidden — endpoint not in your plan | Upgrade on [Pricing](/pricing) |
+| `404` | Endpoint or symbol not found | Check spelling, symbol format, or try [the screener](/skills/overview) |
+| `429` | Rate limit exceeded | Back off with exponential delay; upgrade plan or use Nanopayment |
+| `500` | Server error | Retry after 1–2s; if persistent, check [status.arrays.org](https://status.arrays.org) |
+
+## Retry strategy
+
+For idempotent GET requests:
+
+1. **First retry**: wait 1 second
+2. **Second retry**: wait 2 seconds
+3. **Third retry**: wait 4 seconds
+4. **Give up** and surface the error
+
+Always include the `request_id` from the failed response when contacting support.
+
+## Rate limits per plan
+
+| Plan | Daily requests | Burst |
+|---|---|---|
+| Free | 100 | 10 req/s |
+| Pro | 10,000 | 50 req/s |
+| Enterprise | Custom | Custom |
+| Nanopayment | Unlimited (pay-per-call) | 100 req/s |
+
+<Tip>
+The Dashboard shows live usage. Set up a webhook alert at 80% of quota to avoid surprises.
+</Tip>

@@ -1,0 +1,81 @@
+---
+title: "Nanopayment Overview"
+description: "Pay-per-call API access in USDC. No subscription, no API key, no signup."
+---
+
+## What it is
+
+Arrays Nanopayment lets your code or AI agent call our API and **pay per request in USDC** using the [x402 HTTP standard](https://x402.org) and [Circle Gateway](https://www.circle.com/gateway).
+
+No subscription. No API key. No procurement.
+
+<Info>
+Read the launch blog: [Arrays Financial Data launches on Nanopayments, powered by Circle Gateway](https://arrays.org/blog/arrays-financial-data-launches-on-nanopayments-powered-by-circle-gateway).
+</Info>
+
+## How it works
+
+<Steps>
+  <Step title="Your client calls an Arrays endpoint">
+    No auth header needed.
+  </Step>
+  <Step title="The server returns HTTP 402 Payment Required">
+    The response includes payment terms: amount in USDC, recipient address, supported chains.
+  </Step>
+  <Step title="Your wallet signs an EIP-3009 authorization">
+    Off-chain signature — no gas, no transaction broadcast.
+  </Step>
+  <Step title="Client retries with the signature">
+    Arrays validates with Circle Gateway, settles the USDC, and returns the data — all in ~500ms.
+  </Step>
+</Steps>
+
+## Pricing (today)
+
+<Note>
+Nanopayment currently covers **15 crypto endpoints**. Stocks, ETF, macro, and options are planned for the next two quarters.
+</Note>
+
+<Tabs>
+  <Tab title="Basic tier · $0.008 / call">
+    - Token info
+    - Spot OHLCV
+    - Futures OHLCV
+    - Funding rate
+    - Open interest
+    - Long-short ratio
+    - Volume
+    - Token unlock events
+    - Circulating supply
+    - Market cap
+    - Fear & Greed index
+    - Company crypto holdings
+  </Tab>
+  <Tab title="Advanced tier · $0.03 / call">
+    - Market metrics
+    - Crypto screener (snapshot)
+    - Crypto screener (time range)
+  </Tab>
+</Tabs>
+
+## When to use it
+
+<CardGroup cols={2}>
+  <Card title="✅ Perfect for">
+    - Autonomous AI agents that pay for their own data
+    - Burst / low-volume usage where a subscription is overkill
+    - On-chain native projects already holding USDC
+    - Prototyping without account creation
+  </Card>
+  <Card title="❌ Not ideal for">
+    - Stock / ETF / macro queries (not yet supported)
+    - High-volume usage where Pro subscription is cheaper
+    - Teams that need a dashboard, usage analytics, or SLAs
+  </Card>
+</CardGroup>
+
+## Next step
+
+<Card title="Build your first paid call" icon="rocket" href="/nanopayment/quickstart">
+  TypeScript end-to-end example in under 30 lines.
+</Card>

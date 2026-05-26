@@ -1,0 +1,85 @@
+---
+title: "Quickstart"
+description: "From zero to your first Arrays response in 5 steps."
+---
+
+## 1. Create your account
+
+Head to [arrays.org](https://arrays.org) and sign up with email, Google, or GitHub.
+
+## 2. Copy your API key
+
+In the dashboard, your key is shown immediately — no email verification required to start.
+
+<Warning>
+Treat your API key like a password. Never commit it to git. Use a `.env` file or your platform's secret manager.
+</Warning>
+
+## 3. Make your first call
+
+<Tabs>
+  <Tab title="cURL">
+    ```bash
+    curl "https://data-tools.prd.space.id/api/v1/equity/quote?symbol=AAPL" \
+      -H "X-API-Key: $ARRAYS_API_KEY"
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```python
+    import os, requests
+
+    r = requests.get(
+        "https://data-tools.prd.space.id/api/v1/equity/quote",
+        headers={"X-API-Key": os.environ["ARRAYS_API_KEY"]},
+        params={"symbol": "AAPL"},
+    )
+    print(r.json())
+    ```
+  </Tab>
+  <Tab title="Node.js">
+    ```javascript
+    const res = await fetch(
+      "https://data-tools.prd.space.id/api/v1/equity/quote?symbol=AAPL",
+      { headers: { "X-API-Key": process.env.ARRAYS_API_KEY } }
+    );
+    console.log(await res.json());
+    ```
+  </Tab>
+</Tabs>
+
+You should see a JSON envelope:
+
+```json
+{
+  "success": true,
+  "request_id": "...",
+  "data": [{ "symbol": "AAPL", "price": 195.42, ... }]
+}
+```
+
+<Check>
+Every Arrays endpoint returns this envelope. `data` is always an array.
+</Check>
+
+## 4. Try it from your AI agent
+
+Skip the code entirely — give your agent the Arrays Skills and ask in plain English.
+
+<CardGroup cols={2}>
+  <Card title="Claude Code" icon="terminal" href="/skills/install-claude-code">Install in 30 seconds</Card>
+  <Card title="Cursor / Windsurf" icon="code" href="/skills/install-cursor">Add as project rules</Card>
+  <Card title="OpenAI Codex" icon="robot" href="/skills/install-codex">Include as context</Card>
+  <Card title="More agents" icon="puzzle-piece" href="/skills/overview">Any markdown-aware agent</Card>
+</CardGroup>
+
+## 5. Build something real
+
+Pick a real-world task and ship it:
+
+- **"Compare PE and ROE of NVDA vs AMD over the last 4 quarters"** — uses `equity-fundamentals`
+- **"Show me top 10 crypto by 7-day funding rate"** — uses `crypto-futures-data`
+- **"List S&P 500 names that beat estimates this earnings season"** — uses `equity-events` + `stock-screener`
+
+<Tip>
+Stuck? Hit `Ctrl/Cmd + K` to ask our docs AI anything, or join the [Discord](/support).
+</Tip>

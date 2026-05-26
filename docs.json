@@ -1,0 +1,117 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Arrays",
+  "description": "Unified financial data engine for AI agents and developers — equities, crypto, ETF, macro, and on-chain data through one API.",
+  "colors": {
+    "primary": "#121212",
+    "light": "#fafafa",
+    "dark": "#121212"
+  },
+  "favicon": "/favicon.png",
+  "logo": {
+    "light": "/logo/light.png",
+    "dark": "/logo/dark.png",
+    "href": "https://arrays.org"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "welcome",
+              "quickstart",
+              "concepts"
+            ]
+          },
+          {
+            "group": "AI Agent Hub",
+            "pages": [
+              "skills/overview",
+              "skills/install-claude-code",
+              "skills/install-cursor",
+              "skills/install-codex",
+              "skills/prompts"
+            ]
+          },
+          {
+            "group": "Nanopayment",
+            "pages": [
+              "nanopayment/overview",
+              "nanopayment/quickstart"
+            ]
+          },
+          {
+            "group": "Plans & Support",
+            "pages": [
+              "pricing",
+              "support"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/authentication",
+              "api-reference/errors"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "GitHub · Skills",
+          "href": "https://github.com/ArraysData/arrays-skills",
+          "icon": "github"
+        },
+        {
+          "anchor": "Status",
+          "href": "https://status.arrays.org",
+          "icon": "signal-bars"
+        }
+      ]
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Pricing",
+        "href": "/pricing"
+      },
+      {
+        "label": "Dashboard",
+        "href": "https://arrays.org"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get API Key",
+      "href": "https://arrays.org"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/ArraysData",
+      "website": "https://arrays.org"
+    }
+  },
+  "fonts": {
+    "family": "Plus Jakarta Sans"
+  },
+  "seo": {
+    "metatags": {
+      "og:image": "/images/og.png",
+      "twitter:card": "summary_large_image"
+    }
+  }
+}

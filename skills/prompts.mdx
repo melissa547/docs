@@ -1,0 +1,84 @@
+---
+title: "Prompt Cookbook"
+description: "Real-world questions you can ask once Arrays Skills are installed in your agent."
+---
+
+## Equity research
+
+<CodeGroup>
+  ```text Compare two companies
+  Compare NVDA and AMD over the last 4 quarters:
+  - Revenue growth YoY
+  - Gross margin trend
+  - Free cash flow
+  ```
+
+  ```text Earnings surprise
+  Which S&P 500 names beat analyst estimates by more than 10%
+  this earnings season? Sort by surprise %.
+  ```
+
+  ```text Executive comp
+  Show me Tim Cook's total compensation for the last 3 fiscal years,
+  broken down by salary, bonus, and stock awards.
+  ```
+</CodeGroup>
+
+## Crypto
+
+<CodeGroup>
+  ```text Funding rate scan
+  List the top 10 perpetual futures by 7-day average funding rate.
+  Highlight any with funding > 0.05% / 8h.
+  ```
+
+  ```text Exchange flow
+  Show me Bitcoin net exchange flow (deposits − withdrawals)
+  for the last 30 days. Flag any day with >5,000 BTC net outflow.
+  ```
+
+  ```text On-chain metrics
+  What's BTC's current MVRV, NUPL, and Puell Multiple?
+  Compare to the values 90 days ago.
+  ```
+</CodeGroup>
+
+## ETF & macro
+
+<CodeGroup>
+  ```text ETF composition
+  What are the top 10 holdings of QQQ and their weights?
+  How has the technology sector weighting changed over the past year?
+  ```
+
+  ```text Macro snapshot
+  Give me a one-screen macro summary as of today:
+  - 2Y, 10Y, 30Y Treasury yields
+  - latest CPI YoY
+  - VIX
+  - DXY
+  ```
+</CodeGroup>
+
+## Multi-skill workflows
+
+<CodeGroup>
+  ```text Screener → fundamentals
+  Find US stocks with:
+  - market cap > $10B
+  - PE < 15
+  - dividend yield > 3%
+  - positive YoY revenue growth
+
+  Then for the top 5, show their last 4 quarters of net income.
+  ```
+
+  ```text News + transcripts
+  What were the main themes in TSLA's last earnings call?
+  Cross-reference with the latest analyst price targets.
+  ```
+</CodeGroup>
+
+<Tip>
+Stuck on a prompt? Hit `Ctrl/Cmd + K` and ask our docs AI — it knows every Skill and endpoint.
+</Tip>

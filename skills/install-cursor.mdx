@@ -1,0 +1,66 @@
+---
+title: "Install on Cursor / Windsurf"
+description: "Add Arrays Skills as project rules so Cursor and Windsurf use them automatically."
+---
+
+## 1. Clone the Skills repo
+
+```bash
+git clone https://github.com/ArraysData/arrays-skills.git
+```
+
+## 2. Reference Skills from your project
+
+Cursor and Windsurf both read project-level rules. In your repo root, create `.cursor/rules/arrays.mdc` (Cursor) or `.windsurfrules` (Windsurf):
+
+<Tabs>
+  <Tab title="Cursor (.cursor/rules/arrays.mdc)">
+    ```markdown
+    ---
+    description: Use Arrays Skills for financial-data questions
+    globs: ["**/*"]
+    ---
+
+    When the user asks about stocks, crypto, ETF, macro, or any market data,
+    follow the Arrays Skills at /absolute/path/to/arrays-skills/skills/.
+
+    Authentication:
+    - Base URL: https://data-tools.prd.space.id
+    - Header: X-API-Key from ARRAYS_API_KEY env var
+    ```
+  </Tab>
+  <Tab title="Windsurf (.windsurfrules)">
+    ```markdown
+    # Arrays Financial Data
+
+    Use the Arrays Skills at /absolute/path/to/arrays-skills/skills/
+    when answering questions about market data.
+
+    Auth: X-API-Key header, key in ARRAYS_API_KEY env var.
+    Base: https://data-tools.prd.space.id
+    ```
+  </Tab>
+</Tabs>
+
+## 3. Set your API key
+
+In your project's `.env` (and add `.env` to `.gitignore`):
+
+```bash
+ARRAYS_API_KEY=your_key_here
+ARRAYS_API_BASE_URL=https://data-tools.prd.space.id
+```
+
+## 4. Try it
+
+In Cursor / Windsurf chat, ask:
+
+```
+Show me NVDA's last 4 quarters of free cash flow.
+```
+
+The agent should follow the Arrays Skill, call `company/cashflow-statements`, and return real data.
+
+<Info>
+Cursor and Windsurf currently can't auto-execute HTTP calls — they'll generate the code, and you run it. For a fully automated loop, use [Claude Code](/skills/install-claude-code) or [Codex](/skills/install-codex).
+</Info>

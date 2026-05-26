@@ -1,0 +1,68 @@
+---
+title: "Install on Claude Code"
+description: "Get the Arrays Skills running inside Claude Code in under a minute."
+---
+
+## Prerequisites
+
+- [Claude Code](https://claude.com/claude-code) installed
+- An Arrays API key from [arrays.org](https://arrays.org)
+
+## 1. Clone the Skills repo
+
+```bash
+git clone https://github.com/ArraysData/arrays-skills.git
+```
+
+## 2. Point Claude Code at the Skills
+
+In your project, create or edit `.claude/CLAUDE.md` and reference the Skills directory:
+
+```markdown
+# Project context
+
+Use these Arrays Skills when answering financial-data questions:
+
+@/absolute/path/to/arrays-skills/skills/
+```
+
+<Tip>
+Or symlink the `skills/` folder into your project root so the path is relative and portable across machines.
+</Tip>
+
+## 3. Set your API key
+
+Add to your shell config (`~/.zshrc` or `~/.bashrc`):
+
+```bash
+export ARRAYS_API_KEY="your_key_here"
+export ARRAYS_API_BASE_URL="https://data-tools.prd.space.id"
+```
+
+Reload: `source ~/.zshrc`
+
+## 4. Try it
+
+In Claude Code, ask:
+
+```
+What was AAPL's revenue and net income last quarter?
+```
+
+Claude should automatically pick the `arrays-data-api-equity-fundamentals` Skill, call the `company/income-statements` endpoint, and return real numbers.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Claude doesn't seem to use the Skills">
+    Verify `CLAUDE.md` is in the project root or `.claude/` folder, and that the path inside it is absolute or correctly resolved. Try running `claude --debug` to see which context files are loaded.
+  </Accordion>
+
+  <Accordion title="'Unauthorized' or 401 error">
+    Check `echo $ARRAYS_API_KEY` is set in the same shell session where Claude Code runs. If you opened Claude Code from a GUI, export the var system-wide or use a `.env` file at the project root.
+  </Accordion>
+
+  <Accordion title="'Rate limit exceeded'">
+    Free tier is capped at 100 req/day. See [Pricing](/pricing) for Pro and Enterprise quotas, or use [Nanopayment](/nanopayment/overview) for crypto endpoints with no quota.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,87 @@
+---
+title: "Nanopayment Quickstart"
+description: "Make your first pay-per-call request in TypeScript or Python."
+---
+
+## Prerequisites
+
+- A wallet on any of 11 supported EVM chains (Ethereum, Base, Arbitrum, Optimism, etc.)
+- USDC deposited via [Circle Gateway](https://www.circle.com/gateway)
+- `x402-fetch` (Node) or `x402-requests` (Python) installed
+
+## TypeScript example
+
+```bash
+npm install x402-fetch viem
+```
+
+```typescript
+import { createWalletClient, http } from "viem";
+import { privateKeyToAccount } from "viem/accounts";
+import { base } from "viem/chains";
+import { wrapFetchWithPayment } from "x402-fetch";
+
+const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
+const client = createWalletClient({ account, chain: base, transport: http() });
+
+// Wrap fetch with x402 payment support
+const fetchWithPayment = wrapFetchWithPayment(fetch, client);
+
+// Make a paid call — no API key needed
+const res = await fetchWithPayment(
+  "https://data-tools.prd.space.id/api/v1/crypto/funding-rate?symbol=BTCUSDT"
+);
+
+console.log(await res.json());
+```
+
+That's it. The first call returns 402; `wrapFetchWithPayment` automatically signs, retries, and returns the data.
+
+## Python example
+
+```bash
+pip install x402-requests
+```
+
+```python
+import os
+from x402_requests import X402Session
+from eth_account import Account
+
+account = Account.from_key(os.environ["PRIVATE_KEY"])
+session = X402Session(account=account, chain="base")
+
+res = session.get(
+    "https://data-tools.prd.space.id/api/v1/crypto/funding-rate",
+    params={"symbol": "BTCUSDT"},
+)
+print(res.json())
+```
+
+## Cost math
+
+How much will it actually cost?
+
+| Use case | Calls / month | Tier | Cost |
+|---|---|---|---|
+| Daily funding-rate snapshot | 30 | $0.008 | **$0.24** |
+| Hourly funding-rate for 10 pairs | 7,200 | $0.008 | **$57.60** |
+| Crypto screener every 5 min | 8,640 | $0.03 | **$259.20** |
+
+<Tip>
+At >5,000 calls/month, the [Pro plan ($29/mo)](/pricing) becomes cheaper than basic-tier nanopayment. Mix both: Pro for steady workloads, Nanopayment for spikes.
+</Tip>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="`Insufficient USDC balance`">
+    Top up via Circle Gateway. The error response includes the exact amount needed.
+  </Accordion>
+  <Accordion title="`Unsupported chain`">
+    Nanopayment supports 11 EVM chains. Check your wallet client is on Base, Ethereum, Arbitrum, Optimism, Polygon, or another supported chain.
+  </Accordion>
+  <Accordion title="`Signature invalid`">
+    Make sure your wallet client uses the same account that holds the USDC. EIP-3009 requires the signer == token holder.
+  </Accordion>
+</AccordionGroup>

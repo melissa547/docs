@@ -1,0 +1,83 @@
+---
+title: "What's a Skill"
+description: "Arrays Skills are Markdown files that teach your AI agent how to use the Arrays API — no SDK, no glue code."
+---
+
+## How Skills work
+
+A Skill is a single `SKILL.md` file with YAML frontmatter. When you point a markdown-aware agent at it, the agent reads the file as **system context** and learns:
+
+1. What domain this Skill covers (equity fundamentals, crypto futures, etc.)
+2. The base URL and auth header
+3. Every available endpoint, parameter, and response shape
+4. Edge cases and conventions (e.g. fiscal vs calendar quarters)
+
+The agent then composes its own HTTP calls — no plugin runtime, no MCP server, just text.
+
+<Info>
+All 14 Skills are open-source MIT at [github.com/ArraysData/arrays-skills](https://github.com/ArraysData/arrays-skills).
+</Info>
+
+## Agent compatibility matrix
+
+| Agent / IDE | Status | How to install |
+|---|---|---|
+| **Claude Code** | ✅ Supported | [Install guide →](/skills/install-claude-code) |
+| **Cursor** | ✅ Supported | [Install guide →](/skills/install-cursor) |
+| **Windsurf** | ✅ Supported | Same as Cursor — add to project rules |
+| **OpenAI Codex** | ✅ Supported | [Install guide →](/skills/install-codex) |
+| **ChatGPT (custom GPTs)** | ⚠️ Workaround | Paste SKILL.md contents into instructions |
+| **Other markdown-aware agents** | ✅ Generally compatible | Add `SKILL.md` to agent context |
+
+## Available Skills
+
+<CardGroup cols={2}>
+  <Card title="Equity Fundamentals" icon="building">
+    Company profiles, financials, executive comp, KPIs, options chain
+  </Card>
+  <Card title="Equity Estimates & Targets" icon="bullseye">
+    Analyst estimates, price targets, earnings guidance
+  </Card>
+  <Card title="Equity Events" icon="calendar">
+    Dividends, splits, earnings calendar, transcripts, SEC filings, IPO, M&A
+  </Card>
+  <Card title="Equity Ownership & Flow" icon="users">
+    Institutional holdings, insider trades, senate trades
+  </Card>
+  <Card title="Stock Screener" icon="filter">
+    70+ filters across sector, valuation, financials, events
+  </Card>
+  <Card title="Stock Technical Metrics" icon="chart-bar">
+    Darkpool data, analyst ratings, market metrics
+  </Card>
+  <Card title="Spot Market Price & Volume" icon="chart-line">
+    Stock + crypto OHLCV, kline, market cap
+  </Card>
+  <Card title="Crypto Futures Data" icon="bitcoin-sign">
+    Funding rates, open interest, long-short ratios
+  </Card>
+  <Card title="Crypto Metrics & Screener" icon="magnifying-glass-chart">
+    On-chain metrics, DeFi pools, fear-greed, token screening
+  </Card>
+  <Card title="Crypto Exchange Flow" icon="arrow-right-arrow-left">
+    Exchange inflow / outflow / netflow
+  </Card>
+  <Card title="ETF Fundamentals" icon="layer-group">
+    Holdings, sector weights, fund flow
+  </Card>
+  <Card title="Macro & Economics" icon="globe">
+    Treasury, CPI, GDP, forex, commodities, VIX
+  </Card>
+  <Card title="Company Crypto Holdings" icon="wallet">
+    Which companies hold which crypto, transactions over time
+  </Card>
+  <Card title="Market News & Ask" icon="newspaper">
+    Real-time market news and earnings transcripts
+  </Card>
+</CardGroup>
+
+## Next step
+
+<Card title="Install your first Skill" icon="rocket" href="/skills/install-claude-code">
+  Pick your agent and follow a 30-second guide.
+</Card>

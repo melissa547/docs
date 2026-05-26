@@ -1,0 +1,74 @@
+---
+title: "API Introduction"
+description: "Arrays exposes 114+ REST endpoints across equities, crypto, ETF, macro, and on-chain data — all under one base URL and one auth header."
+---
+
+## Base URL
+
+```
+https://data-tools.prd.space.id
+```
+
+## Authentication
+
+Send your API key in the `X-API-Key` header on every request:
+
+```bash
+curl "https://data-tools.prd.space.id/api/v1/equity/quote?symbol=AAPL" \
+  -H "X-API-Key: $ARRAYS_API_KEY"
+```
+
+[Full auth guide →](/api-reference/authentication)
+
+## Response envelope
+
+Every endpoint returns the same shape:
+
+```json
+{
+  "success": true,
+  "request_id": "req_abc123",
+  "data": [ ... ]
+}
+```
+
+`data` is **always an array**, even for single-record results.
+
+## Endpoint catalog
+
+<Info>
+The full interactive API reference (auto-generated from our OpenAPI spec) is being migrated into this site. In the meantime, browse the live Swagger UI at [data-tools.prd.arrays.org/swagger](https://data-tools.prd.arrays.org/swagger/index.html).
+</Info>
+
+Endpoints are grouped into 8 domains:
+
+<CardGroup cols={2}>
+  <Card title="Equity" icon="building">
+    Quote, fundamentals, estimates, earnings, ownership, options
+  </Card>
+  <Card title="Crypto" icon="bitcoin-sign">
+    Spot, futures, funding, on-chain metrics, exchange flow
+  </Card>
+  <Card title="ETF & Funds" icon="layer-group">
+    Holdings, sector weights, fund flow
+  </Card>
+  <Card title="Macro & Economics" icon="globe">
+    Treasury, CPI, GDP, forex, commodities, VIX
+  </Card>
+  <Card title="News & Transcripts" icon="newspaper">
+    Market news, earnings calls
+  </Card>
+  <Card title="Stock Screener" icon="filter">
+    70+ filters
+  </Card>
+  <Card title="Polymarket" icon="chart-pie">
+    Prediction market data
+  </Card>
+  <Card title="Technical Metrics" icon="chart-bar">
+    Darkpool, analyst ratings
+  </Card>
+</CardGroup>
+
+## Rate limits & errors
+
+[Error codes and retry guidance →](/api-reference/errors)
