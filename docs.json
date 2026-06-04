@@ -85,6 +85,11 @@
           "anchor": "Swagger API Explorer",
           "href": "https://data-tools.prd.arrays.org/swagger/index.html",
           "icon": "code"
+        },
+        {
+          "anchor": "Support",
+          "href": "mailto:support@arrays.org",
+          "icon": "envelope"
         }
       ]
     }
@@ -94,10 +99,6 @@
       {
         "label": "Pricing",
         "href": "/pricing"
-      },
-      {
-        "label": "Support",
-        "href": "mailto:support@arrays.org"
       },
       {
         "label": "Dashboard",
