@@ -43,13 +43,6 @@
       },
       {
         "tab": "API",
-        "anchors": [
-          {
-            "anchor": "Swagger API Explorer",
-            "href": "https://data-tools.prd.arrays.org/swagger/index.html",
-            "icon": "code"
-          }
-        ],
         "groups": [
           {
             "group": "Overview",
@@ -62,18 +55,21 @@
           {
             "group": "Endpoints",
             "openapi": "api-reference/openapi.json"
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              {
+                "anchor": "Swagger API Explorer",
+                "href": "https://data-tools.prd.arrays.org/swagger/index.html",
+                "icon": "code"
+              }
+            ]
           }
         ]
       },
       {
         "tab": "Skills",
-        "anchors": [
-          {
-            "anchor": "Skills Repo on GitHub",
-            "href": "https://github.com/ArraysData/arrays-skills",
-            "icon": "github"
-          }
-        ],
         "groups": [
           {
             "group": "AI Agent Hub",
@@ -83,6 +79,16 @@
               "skills/install-cursor",
               "skills/install-codex",
               "skills/prompts"
+            ]
+          },
+          {
+            "group": "Resources",
+            "pages": [
+              {
+                "anchor": "Skills Repo on GitHub",
+                "href": "https://github.com/ArraysData/arrays-skills",
+                "icon": "github"
+              }
             ]
           }
         ]
