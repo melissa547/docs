@@ -77,11 +77,6 @@
           "anchor": "GitHub · Skills",
           "href": "https://github.com/ArraysData/arrays-skills",
           "icon": "github"
-        },
-        {
-          "anchor": "Status",
-          "href": "https://status.arrays.org",
-          "icon": "signal-bars"
         }
       ]
     }
