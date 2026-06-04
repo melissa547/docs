@@ -12,7 +12,7 @@ Send your key in the `X-API-Key` header.
 <Tabs>
   <Tab title="cURL">
     ```bash
-    curl "https://data-tools.prd.space.id/api/v1/equity/quote?symbol=AAPL" \
+    curl "https://data-tools.prd.arrays.org/api/v1/equity/quote?symbol=AAPL" \
       -H "X-API-Key: $ARRAYS_API_KEY"
     ```
   </Tab>
@@ -20,7 +20,7 @@ Send your key in the `X-API-Key` header.
     ```python
     import requests, os
     r = requests.get(
-        "https://data-tools.prd.space.id/api/v1/equity/quote",
+        "https://data-tools.prd.arrays.org/api/v1/equity/quote",
         headers={"X-API-Key": os.environ["ARRAYS_API_KEY"]},
         params={"symbol": "AAPL"},
     )
@@ -29,7 +29,7 @@ Send your key in the `X-API-Key` header.
   <Tab title="Node.js">
     ```javascript
     const res = await fetch(
-      "https://data-tools.prd.space.id/api/v1/equity/quote?symbol=AAPL",
+      "https://data-tools.prd.arrays.org/api/v1/equity/quote?symbol=AAPL",
       { headers: { "X-API-Key": process.env.ARRAYS_API_KEY } }
     );
     ```
@@ -62,6 +62,6 @@ import { wrapFetchWithPayment } from "x402-fetch";
 
 const fetchWithPayment = wrapFetchWithPayment(fetch, walletClient);
 const res = await fetchWithPayment(
-  "https://data-tools.prd.space.id/api/v1/crypto/funding-rate?symbol=BTCUSDT"
+  "https://data-tools.prd.arrays.org/api/v1/crypto/funding-rate?symbol=BTCUSDT"
 );
 ```
