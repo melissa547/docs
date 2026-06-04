@@ -76,6 +76,11 @@
           "anchor": "GitHub · Skills",
           "href": "https://github.com/ArraysData/arrays-skills",
           "icon": "github"
+        },
+        {
+          "anchor": "Swagger API Explorer",
+          "href": "https://data-tools.prd.arrays.org/swagger/index.html",
+          "icon": "code"
         }
       ]
     }
