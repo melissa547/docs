@@ -44,10 +44,9 @@
             ]
           },
           {
-            "group": "Plans & Support",
+            "group": "Plans",
             "pages": [
-              "pricing",
-              "support"
+              "pricing"
             ]
           }
         ]
@@ -90,6 +89,10 @@
       {
         "label": "Pricing",
         "href": "/pricing"
+      },
+      {
+        "label": "Support",
+        "href": "mailto:support@arrays.org"
       },
       {
         "label": "Dashboard",
