@@ -27,16 +27,11 @@
             ]
           },
           {
-            "group": "Nanopayment",
+            "group": "Plans & Payment",
             "pages": [
+              "pricing",
               "nanopayment/overview",
               "nanopayment/quickstart"
-            ]
-          },
-          {
-            "group": "Plans",
-            "pages": [
-              "pricing"
             ]
           }
         ]
