@@ -23,8 +23,7 @@
             "group": "Get Started",
             "pages": [
               "welcome",
-              "quickstart",
-              "concepts"
+              "quickstart"
             ]
           },
           {
