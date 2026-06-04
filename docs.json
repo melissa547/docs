@@ -27,16 +27,6 @@
             ]
           },
           {
-            "group": "AI Agent Hub",
-            "pages": [
-              "skills/overview",
-              "skills/install-claude-code",
-              "skills/install-cursor",
-              "skills/install-codex",
-              "skills/prompts"
-            ]
-          },
-          {
             "group": "Nanopayment",
             "pages": [
               "nanopayment/overview",
@@ -52,7 +42,14 @@
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "API",
+        "anchors": [
+          {
+            "anchor": "Swagger API Explorer",
+            "href": "https://data-tools.prd.arrays.org/swagger/index.html",
+            "icon": "code"
+          }
+        ],
         "groups": [
           {
             "group": "Overview",
@@ -67,22 +64,30 @@
             "openapi": "api-reference/openapi.json"
           }
         ]
+      },
+      {
+        "tab": "Skills",
+        "anchors": [
+          {
+            "anchor": "Skills Repo on GitHub",
+            "href": "https://github.com/ArraysData/arrays-skills",
+            "icon": "github"
+          }
+        ],
+        "groups": [
+          {
+            "group": "AI Agent Hub",
+            "pages": [
+              "skills/overview",
+              "skills/install-claude-code",
+              "skills/install-cursor",
+              "skills/install-codex",
+              "skills/prompts"
+            ]
+          }
+        ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "GitHub · Skills",
-          "href": "https://github.com/ArraysData/arrays-skills",
-          "icon": "github"
-        },
-        {
-          "anchor": "Swagger API Explorer",
-          "href": "https://data-tools.prd.arrays.org/swagger/index.html",
-          "icon": "code"
-        }
-      ]
-    }
+    ]
   },
   "navbar": {
     "links": [
