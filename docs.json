@@ -9,6 +9,11 @@
     "dark": "#121212"
   },
   "favicon": "/favicon.png",
+  "logo": {
+    "light": "/logo/light.png",
+    "dark": "/logo/dark.png",
+    "href": "https://arrays.org"
+  },
   "navigation": {
     "tabs": [
       {
