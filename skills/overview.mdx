@@ -15,7 +15,7 @@ A Skill is a single `SKILL.md` file with YAML frontmatter. When you point a mark
 The agent then composes its own HTTP calls — no plugin runtime, no MCP server, just text.
 
 <Info>
-All 14 Skills are open-source MIT at [github.com/ArraysData/arrays-skills](https://github.com/ArraysData/arrays-skills).
+All 19 Skills are open-source MIT at [github.com/ArraysData/arrays-skills](https://github.com/ArraysData/arrays-skills).
 </Info>
 
 ## Agent compatibility matrix
@@ -35,7 +35,7 @@ Skills work with any agent that supports the open Skill standard. See the full l
 
 ## Available Skills
 
-17 skills across equities, crypto, ETFs, macro, and alternative data. Each is a `SKILL.md` you point your agent at.
+19 skills across equities, crypto, ETFs, macro, and alternative data. Each is a `SKILL.md` you point your agent at.
 
 ### Equities
 
@@ -57,6 +57,7 @@ Skills work with any agent that supports the open Skill standard. See the full l
 | `arrays-data-api-crypto-futures-data` | Perp OHLCV, funding rates, open interest, long-short ratios |
 | `arrays-data-api-crypto-metrics-and-screener` | On-chain metrics (MVRV, NUPL, SOPR…), fear & greed, token screener |
 | `arrays-data-api-crypto-exchange-flow` | Exchange inflow / outflow / netflow |
+| `arrays-data-api-crypto-analytics-passthrough` | On-chain analytics passthrough — ~245 upstream endpoints (network data, miner/entity flows, DEX/AMM) |
 | `arrays-data-api-company-crypto-holdings` | Which companies hold which crypto |
 
 ### ETF & Macro
@@ -73,6 +74,7 @@ Skills work with any agent that supports the open Skill standard. See the full l
 | `arrays-data-api-news` | Market news articles |
 | `arrays-data-api-social-feeds` | X/Twitter handle feeds, post lookup, account metadata |
 | `arrays-data-api-polymarket` | Prediction markets — pricing, positions, holders, trade history |
+| `arrays-data-api-semiconductor-price` | DRAM / NAND Flash / memory-card spot & contract prices, DXI index |
 
 <Info>
 Browse the source for any skill in the [arrays-skills repo](https://github.com/ArraysData/arrays-skills/tree/main/skills).
